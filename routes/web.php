@@ -22,9 +22,12 @@ Route::get('/', function () {
 
 Route::get('hello-world', [BelajarController::class, 'hello_world']);
 
-Route::get('product/{product?}', [ProductController::class, 'index']);
 
+Route::get('products', [ProductController::class, 'index'])->name('list_products');
 Route::get('form', [ProductController::class, 'form'])->name('form');
 Route::post('coba-post', [ProductController::class, 'coba_post'])->name('coba_post');
+Route::get('edit/{product_id}', [ProductController::class, 'edit'])->name('edit');
+Route::put('update/{product_id}', [ProductController::class, 'update'])->name('update');
+Route::delete('delete/{product_id}', [ProductController::class, 'delete'])->name('delete');
 
 Route::view('home', 'home')->middleware('auth');
